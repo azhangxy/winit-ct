@@ -1,0 +1,19 @@
+# @package _global_
+dataset:
+  _target_: src.data.ClimateDatasetCollection   # Will be dynamically instantiated
+  name: climate
+  max_seq_length: 168                                   # Max length of time series
+  projection_horizon: 0                                 # Range of tau-step-ahead prediction (tau = projection_horizon + 1)
+  cf_seq_mode: sliding_treatment                        # sliding_treatment / random_trajectories
+  val_batch_size: 64                                  # Batch size for evaluation
+  treatment_mode: multiclass                            # multiclass / multilabel -- for RMSN
+
+model:
+  dim_treatments: 1
+  dim_vitals: 5
+  dim_static_features: 1
+  dim_outcomes: 1
+
+exp:
+  unscale_rmse: True
+  percentage_rmse: True
